@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tasks lists</title>
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="title">
+				<h1>Список <span class="opacity">дел</span></h1>
+				<button class="create_new_list" id="create_new_list">+</button>
+			</div>
+
+			<div class="modal" id="my_modal">
+				<div class="modal_content">
+					<input class="modal-list_name" type="text" placeholder="Введите название листа">
+					<button class="modal-push" id="modal-push">+</button>
+				</div>
+			</div>
+
+			<div class="task_list_name" id="task_list_name"></div>
+
+			<div class="task_list hidden" id="task_list">
+				<div class="task_list-wrapper">
+					<div class="task_list-close">&times;</div>
+					<div class="task_title">
+						<h2 class="list_title" id="list_title"></h2>
+						<span class="progress" id="progress"></span>
+					</div>
+					<div id="tasks"></div>
+					<div class="new_task" id="new_task">
+						<input class="new_task_input" type="text" placeholder="Введите задачу">
+						<button class="push" id="push" disabled>+</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://kit.fontawesome.com/d141999838.js" crossorigin="anonymous"></script>
+		<script src="scripts/main.js"></script>
+	</body>
+</html>
