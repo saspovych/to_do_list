@@ -92,7 +92,8 @@ function addTasksListsEvent() {
 	const tasksListsName = document.querySelectorAll('.demo_task_list');
 	tasksListsName.forEach(item => {
 		item.addEventListener('click', () => {
-			listName = item.querySelector('.demo_task_list_title').textContent;
+			listName = item.querySelector('.demo_task_list_title').id.split('_').join(' ');
+			console.log(listName);
 			taskList.classList.toggle('hidden');
 			renderLists();
 		})
@@ -184,21 +185,33 @@ function renderDate() {
 function renderTasksLists() {
 	let tasksList = document.getElementById('task_list_name');
 	tasksList.innerHTML = ``;
+	let demoTaskListTitle = '';
 	for(let i = 0; i < localStorage.length; i++) {
 		let demoTaskList = localStorage.key(i);
+		if(demoTaskList.length > 18) {
+			demoTaskListTitle = demoTaskList.slice(0, 18).concat('...');
+		} else {
+			demoTaskListTitle = demoTaskList;
+		}
 		tasksList.innerHTML += `
 			<div class="demo_task_list">
-				<h4 class="demo_task_list_title">${demoTaskList}</h4>
+				<h4 class="demo_task_list_title" id=${demoTaskList.replace(/\s/g, '_')}>${demoTaskListTitle}</h4>
 				<div class="demo_task_list_items"></div>
 			</div>
 		`;
 
 		let demoListItem = document.querySelectorAll('.demo_task_list_items');
 		let arr = JSON.parse(localStorage.getItem(localStorage.key(i)));
+		let demoTaskLIstItem = '';
 		for(let j = 0; j < arr.length; j++) {
 			if(j !== 4) {
+				if(arr[j].length > 30) {
+					demoTaskLIstItem = arr[j].slice(0, 30).concat('...');
+				} else {
+					demoTaskLIstItem = arr[j];
+				}
 				demoListItem[i].innerHTML += `
-					<span class="demo_task_list_item">${arr[j]}</span>
+					<span class="demo_task_list_item">${demoTaskLIstItem}</span>
 				`;
 			}
 		}
