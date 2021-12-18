@@ -93,7 +93,6 @@ function addTasksListsEvent() {
 	tasksListsName.forEach(item => {
 		item.addEventListener('click', () => {
 			listName = item.querySelector('.demo_task_list_title').id.split('_').join(' ');
-			console.log(listName);
 			taskList.classList.toggle('hidden');
 			renderLists();
 		})
